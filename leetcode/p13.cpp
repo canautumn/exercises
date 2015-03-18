@@ -27,7 +27,7 @@ Runtime: 60 ms
 */
 
 
-#include<iostream>
+#include <iostream>
 
 using namespace std;
 

@@ -15,8 +15,8 @@ Another solution: sort the string and only compare the first and the last string
 */
 
 
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <vector>
 
 using namespace std;
 

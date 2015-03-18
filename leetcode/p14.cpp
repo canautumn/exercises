@@ -22,8 +22,8 @@ Runtime: 9 ms
 */
 
 
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <vector>
 
 using namespace std;
 
