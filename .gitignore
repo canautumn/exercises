@@ -1,0 +1,5 @@
+# for exercises only, exclude all files without extensions
+*
+!*.*
+!*/
+!Makefile
