@@ -75,6 +75,9 @@ haystack first, when it is time to terminate the loop. In this case we don't
 need to modify the loop condition.
 See solution below for this method. (Also note that the original loop condition 
 is useless, where I put 'true' instead.)
+Moreover, this solution has another advantage that we do not need to consider
+the special case when needle=='', since the first loop is always executed. 
+This cleans the code a bit more and we don't need strlen anymore.
 
 72 / 72 test cases passed.
 Status: Accepted
@@ -92,7 +95,6 @@ The key is to implement the solution cleanly without dealing with each edge case
 */
 
 #include <iostream>
-#include <cstring>
 
 using namespace std;
 
@@ -100,8 +102,6 @@ class Solution {
 public:
     int strStr(char *haystack, char *needle) {
         int i = 0;
-        int len_needle = strlen(needle);
-        if (len_needle == 0) return 0;
         while (true) {
             char *p1 = haystack;
             char *p2 = needle;
