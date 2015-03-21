@@ -6,17 +6,21 @@ https://leetcode.com/problems/implement-strstr/
 
 Implement strStr().
 
-Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+Returns the index of the first occurrence of needle in haystack, or -1 if 
+needle is not part of haystack.
 
 Update (2014-11-02):
-The signature of the function had been updated to return the index instead of the pointer. If you still see your function signature returns a char * or String, please click the reload button  to reset your code definition.
+The signature of the function had been updated to return the index instead of 
+the pointer. If you still see your function signature returns a char * or 
+String, please click the reload button  to reset your code definition.
 
 
 (EASY) Two Pointers, String
 */
 
 /*
-It's easy to implement a brute-force algorithm, with a pitfall to exceed the time for special cases.
+It's easy to implement a brute-force algorithm, with a pitfall to exceed the 
+time for special cases.
 (Also, the special case when needle == '' needs to be considered.)
 
 class Solution {
@@ -38,9 +42,14 @@ public:
     }
 };
 
-When the 'needle' is very very long, and only mismatch at the end, it may still running after the leftovers of haystack is shorter than needle, which is unnecessary.
-To fix this, get the length of needle and if the leftover is shorter than this, terminate. 
-Also note the boundary condition, to avoid failing in special cases such as "baa" vs. "aa", use (haystack+len_needle-1), not (haystack+len_needle), as the loop condition.
+When the 'needle' is very very long, and only mismatch at the end, it may still
+running after the leftovers of haystack is shorter than needle, which is 
+unnecessary.
+To fix this, get the length of needle and if the leftover is shorter than this, 
+terminate. 
+Also note the boundary condition, to avoid failing in special cases such as 
+"baa" vs. "aa", use (haystack+len_needle-1), not (haystack+len_needle), as the 
+loop condition.
 
 class Solution {
 public:
@@ -61,9 +70,11 @@ public:
     }
 };
 
-Also note that there is a chance in the loop where we meet the end of the haystack first, 
-when it is time to terminate the loop. In this case we don't need to modify the loop condition.
-See solution below for this method. (Also note that the original loop condition is useless, where I put 'true' instead.)
+Also note that there is a chance in the loop where we meet the end of the 
+haystack first, when it is time to terminate the loop. In this case we don't 
+need to modify the loop condition.
+See solution below for this method. (Also note that the original loop condition 
+is useless, where I put 'true' instead.)
 
 72 / 72 test cases passed.
 Status: Accepted
