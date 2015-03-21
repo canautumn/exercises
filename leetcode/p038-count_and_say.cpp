@@ -31,6 +31,10 @@ depending on whether n is odd or even. Such as
 So when i is increasing one by one, the result goes back and forth in the two 
 strings. There are more optimization that can be done but may not worth doing.
 
+A tip about string's append(): When appending one char, use append(1, ch), 
+not append(&ch), since the latter will use '\0' as the termination. 
+(append(ch) is wrong if ch is a char.)
+
 18 / 18 test cases passed.
 Status: Accepted
 Runtime: 8 ms
