@@ -27,8 +27,21 @@ not NULL. They should return different recursion result as below.
 recursion except for the initial 'root' node since we did that in the upper 
 level recursion. So we can make a helper DFS function without do the NULL 
 check to the node parameter, but only check the 'root' parameter ONCE in the 
-main function -- the improvement is very much insignificant so we just leave 
-the NULL check for the 'root' in each recursion function for clarity.
+solution function as below -- the improvement is very much insignificant so 
+we can just leave the NULL check for the 'root' in each recursion function for 
+clarity.
+
+SOLUTION (ALTERNATIVE):
+int minDepth(TreeNode *root) {
+    if (!root) return 0;
+    else return minDepthDFS(root);
+}
+int minDepthDFS(TreeNode *root) {
+    if (!root->left && !root->right) return 1;
+    if (!root->left) return minDepth(root->right) + 1;
+    if (!root->right) return minDepth(root->left) + 1;
+    return min(minDepth(root->left) + 1, minDepth(root->right) + 1);
+}
 
 Consider a wrong solution below: the problem is that it wrongly implemented 
 the condition of a leaf -- it takes min of two children of which one could be 
