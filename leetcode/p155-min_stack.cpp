@@ -25,6 +25,10 @@ index, remove that minima.
 See SOLUTION 1 OPTIMIZATION 2. Using a small trick avoids recording the index 
 of the minima.
 
+Note that we have to assume the condition to call top() and getMin() is valid 
+(non-empty stack) since there is no valid value they could return if the stack 
+is empty. So the program doesn't check it, as a solution to the OJ.
+
 Tips:
 - std::stack uses 'deque' as its backend by default. This COULD be a little 
 bit slower than using 'vector' in this simple case. So better use a 
@@ -65,12 +69,10 @@ public:
     }
 
     int top() {
-        if (!stack_.size()) return 0;
         return stack_.back();
     }
 
     int getMin() {
-        if (!stack_.size()) return 0;
         return min_.back().second;
     }
 };
