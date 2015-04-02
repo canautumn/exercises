@@ -22,9 +22,9 @@ Return
 */
 
 /*
-Generate the Pascal's Triangle by definition. Make sure to check the edge 
-condition when numRows = 0 (still valid input) in which case it should return 
-an empty vector.
+Generate the Pascal's Triangle by successive equation. Make sure to check the 
+edge condition when numRows = 0 (still valid input) in which case it should 
+return an empty vector.
 
 In the solution below, the initial 1's on two side of the array is generated 
 using initialization, which makes the code a little cleaner.

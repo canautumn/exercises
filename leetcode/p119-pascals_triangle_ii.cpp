@@ -17,10 +17,11 @@ Could you optimize your algorithm to use only O(k) extra space?
 */
 
 /*
-SOLUTION 1: The same calculation as the calculation of full triangle can now 
-be done in place with an array. We will calculate row by row and update each 
-row in place one element by one element. Just need to notice we need a backup 
-of the 'old' version of the previous element to calculate the current element.
+SOLUTION 1: (Successive equation, in place updating)
+The same calculation as the calculation of full triangle can now be done in 
+place with an array. We will calculate row by row and update each row in place 
+one element by one element. Just need to notice we need a backup of the 'old' 
+version of the previous element to calculate the current element.
 
 Notice that the trivial case when rowIndex = 0 and 1 are automatically 
 included.

@@ -57,7 +57,9 @@ Ex: n = 5, k = 0 to 5: [1,5,10,10,5,1]
 
 
 Like solution 1, it will work for n < 34 because of the limit of the result 
-type. It is faster than solution 1 since there is only one pass.
+type. 
+
+It might be slightly faster than solution 1 since there is only one pass.
 
 34 / 34 test cases passed.
 Status: Accepted
