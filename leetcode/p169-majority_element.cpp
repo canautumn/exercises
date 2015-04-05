@@ -100,6 +100,7 @@ do not need to 'Find the longest contiguous identical element' after sorting,
 the n/2th element is always the majority.
 
 
+[*]
 40 / 40 test cases passed.
 Status: Accepted
 Runtime: 26 ms
