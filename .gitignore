@@ -1,4 +1,4 @@
-# for exercises only, exclude all files without extensions
+# for single file programming exercises only, exclude all files that have no extensions
 *
 !*.*
 !*/
