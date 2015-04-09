@@ -55,6 +55,10 @@ one char in the string. It would be nicer if it returns -1 for non-existed key.
 So be careful for edge cases: whether 0 stands for special case or really mean 
 something.
 
+The last break condition is to break the iteration when there is not enough 
+room to fit in another longer non-repeat-char string. This only optimizes a 
+little for a few special cases and is totally optional.
+
 
 981 / 981 test cases passed.
 Status: Accepted
