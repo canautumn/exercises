@@ -13,7 +13,7 @@ palindromic substring.
 */
 
 /*
-SOLUTION TLE (DP):
+SOLUTION 1 (DP, O(n^2) space):
 
 First write a recursive solution. This is clearly an overlapping subproblem 
 case. And the recursive solution will be not practical:
@@ -37,15 +37,28 @@ record whether substring indexed by i to j is a palindrome. Build the table
 with length (j - i + 1) from 1 to s.size(). This solution is practical enough 
 to get a long string's solution quickly.
 
-But DP solution is O(n^2). The OJ gives TLE since there will be O(n) solution 
-for this problem. DP is not always the best method.
+Pitfall: carefully examine the termination condition of 'i' 
+(s.size() - len + 1). If 'i' missed the last letter, it might only fail at a 
+few edge cases and difficult to debug.
+
+DP solution's time complexity is O(n^2). The OJ will give TLE if 
+vector<vector<int>> is used as the look up table because of the overhead. 
+Change it to bool[1000][1000] array will just pass the OJ.
 
 Also, DP solution uses O(n^2) space, which can be easily optimized to O(n) 
 space (by discarding information that represents substrings with lengths less 
 than len - 2) but not shown here.
 
+There is a O(n^2) time O(1) space solution that makes use of the palindrome's 
+property. See Solution 2.
 
-(Time Limit Exceeded)
+And there will be O(n) solution for this problem. See Solution 3. DP is not 
+always the best method.
+
+
+88 / 88 test cases passed.
+Status: Accepted
+Runtime: 475 ms
 */
 
 
@@ -58,7 +71,12 @@ class Solution {
 public:
     string longestPalindrome(string s) {
         if (s.length() == 0) return "";
-        vector<vector<bool>> table(s.length(), vector<bool>(s.length(), false));
+        // vector<vector<bool>> table(s.length(), vector<bool>(s.length(), false)); // SLOW
+        bool table[1000][1000];
+        for (int i = 0; i < s.length(); ++i)
+            for (int j = 0; j < s.length(); ++j)
+                table[i][j] = false;
+        
         int longest_length = 1, longest_i = 0;
         for (int len = 1; len <= s.size(); ++len) {
             for (int i = 0; i < s.size() - len + 1; ++i) { // note the termination condition

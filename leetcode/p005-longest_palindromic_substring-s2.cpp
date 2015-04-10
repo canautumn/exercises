@@ -13,39 +13,36 @@ palindromic substring.
 */
 
 /*
-SOLUTION TLE (DP):
+SOLUTION 2 (Expanding palindromes, O(n^2) time O(1) space):
 
-First write a recursive solution. This is clearly an overlapping subproblem 
-case. And the recursive solution will be not practical:
+There are 2n+1 possible palindrome center (for odd and even number of letters). 
+So we can just check them. From each possible center of the palindrome, grow 
+one letter by one letter on each side and check if they are the same, which 
+takes O(n) time. The total time is O(n^2). Almost no additional space used.
 
-    string longestPalindrome(string s) {
-        if (s.length() == 0) return "";
-        if (s.length() == 1) return s;
-        if (s[0] == s[s.length() - 1]) {
-            string s1 = longestPalindrome(s.substr(1, s.length() - 2));
-            if (s1.length() == s.length() - 2) {
-                return s;
-            }
-        }
-        string s1 = longestPalindrome(s.substr(0, s.length() - 1));
-        string s2 = longestPalindrome(s.substr(1, s.length() - 1));
-        return s1.length() > s2.length() ? s1 : s2;
-    }
+Loop on the index of letters, for each iteration, check both the possible 
+palindrome centered at that letter, and that between that letter and the next 
+one. For each of the two cases, use a while loop, increasing length of the 
+substring, and check both 1) if the index is out of range of the whole string; 
+2) if the two side has different letter, to terminate the loop.
 
-Translate it into a dynamic programming version. Use a bool table[i][j] to 
-record whether substring indexed by i to j is a palindrome. Build the table 
-with length (j - i + 1) from 1 to s.size(). This solution is practical enough 
-to get a long string's solution quickly.
+A personal opinion:
 
-But DP solution is O(n^2). The OJ gives TLE since there will be O(n) solution 
-for this problem. DP is not always the best method.
+A pitfall is that the length the loop breaks is the first failing length, so 
+make sure the longest palindrome length is updated semantically using the 
+first failing length minus 1. Don't simplifies the equation as below since it 
+adds a level of obscureness on the meaning of the program.
 
-Also, DP solution uses O(n^2) space, which can be easily optimized to O(n) 
-space (by discarding information that represents substrings with lengths less 
-than len - 2) but not shown here.
+    'longest_i = i - (len - 1);' is better than 'longest_i = i - len + 1;'
+    
+Although both DP and this method has O(n^2) time complexity, this method is 6x 
+faster than DP.
 
 
-(Time Limit Exceeded)
+[*]
+88 / 88 test cases passed.
+Status: Accepted
+Runtime: 81 ms
 */
 
 
@@ -57,35 +54,35 @@ using namespace std;
 class Solution {
 public:
     string longestPalindrome(string s) {
-        if (s.length() == 0) return "";
-        vector<vector<bool>> table(s.length(), vector<bool>(s.length(), false));
         int longest_length = 1, longest_i = 0;
-        for (int len = 1; len <= s.size(); ++len) {
-            for (int i = 0; i < s.size() - len + 1; ++i) { // note the termination condition
-                int j = i + len - 1;
-                // cout << i << "," << j << endl;
-                if (j == i) table[i][j] = true;
-                else if (j == i + 1) {
-                    if (s[i] == s[j]) {
-                        table[i][j] = true;
-                        if (2 > longest_length) {
-                            longest_length = 2;
-                            longest_i = i;
-                        }
-                    }
-                    // else table[i][j] = false; // no need since it is initialized to false
-                } else {
-                    if (s[i] == s[j] && table[i+1][j-1]) {
-                        table[i][j] = true;
-                        if (j - i + 1 > longest_length) {
-                            longest_length = j - i + 1;
-                            longest_i = i;
-                        }
-                    }
+        for (int i = 0; i < s.length(); ++i) {
+            int len = 1;
+            while (i - len >= 0 && i + len < s.length()) {
+                if (s[i - len] != s[i + len]) {
+                    break;
                 }
+                len++;
+            }
+            int current_longest_length = (len - 1) * 2 + 1;
+            if (longest_length < current_longest_length) {
+                longest_length = current_longest_length;
+                longest_i = i - (len - 1);
+            }
+                    
+            len = 1;
+            while (i - len + 1 >= 0 && i + len < s.length()) {
+                if (s[i - len + 1] != s[i + len]) {
+
+                    break;
+                }
+                len++;
+            }
+            current_longest_length = (len - 1) * 2;
+            if (longest_length < current_longest_length) {
+                longest_length = current_longest_length;
+                longest_i = i - (len - 1) + 1;
             }
         }
-        // cout << longest_i << " " << longest_length << endl;
         return s.substr(longest_i, longest_length);
     }
 };
