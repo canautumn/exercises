@@ -16,11 +16,10 @@ the numeral I can be placed before V and X to make 4 units (IV) and 9 units (IX)
 X can be placed before L and C to make 40 (XL) and 90 (XC) respectively
 C can be placed before D and M to make 400 (CD) and 900 (CM) according to the same pattern
 
-13m.
-
 - A simpler method is to use a map or a function to do letter->int, and check if the next digit is 
 larger than the current one, and if so, subtract it instead of adding it.
 
+[13m]
 3999 / 3999 test cases passed.
 Status: Accepted
 Runtime: 60 ms
