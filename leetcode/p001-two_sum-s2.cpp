@@ -60,13 +60,14 @@ before sorting.
 The first implementation is to use a lambda expression to tell std::sort to 
 sort an index array but use the value in the 'numbers' vector that indexed 
 by the indexes. So the index array needs to be filled with the ascending 
-original indexes before sorting, using a loop, std::iota, or std::fill. 
-Note that the 'numbers' is not actually sorted. So we need to index twice 
-to get a value, such as 'numbers[sorted_indexes[left]]'. See the program.
+original indexes before sorting, using a loop, or std::iota. 
 
 Pitfall:
 
-The OJ only accepts index pair with ascending order. This is not a problem 
+- Note that the 'numbers' is not actually sorted. So we need to index twice 
+to get a value, such as 'numbers[sorted_indexes[left]]'. See the program.
+
+- The OJ only accepts index pair with ascending order. This is not a problem 
 with the hash map solution but since we sorted the array, the original indexes 
 could be reversed. This needs to be taken care of when pushing results. 
 
