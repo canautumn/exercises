@@ -29,12 +29,12 @@ two pointers. The hash table has smaller order of complexity but may not beat
 the sorting solution in real performance. 
 
 Two Sum an served as a subroutine in the Three Sum problem. Sort the array and 
-iteratively take one element of the array as the target as in the Two Sum 
-problem, and the rest of the array (starting from the next element of the 
-target until the end) as the search array (and note that it is already sorted) 
-and pass them into a Two Sum problem function. The Two Sum function needs to 
-be modified that it returns the numbers, not indexes; also it needs to search 
-multiple instances of the pairs. 
+iteratively take one element of the array and make the opposite number as the 
+target as in the Two Sum problem, and the rest of the array (starting from the 
+next element of the target until the end) as the search array (and note that 
+it is already sorted) and pass them into a Two Sum problem function. The Two 
+Sum function needs to be modified that it returns the numbers, not indexes; 
+also it needs to search multiple instances of the pairs. 
 
 We also note that Three Sum problem requires the results are unique. It costs 
 a lot to using a hash set to implement it. Actually, we can avoid the repeated 
