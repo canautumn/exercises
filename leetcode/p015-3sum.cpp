@@ -69,7 +69,7 @@ public:
         vector<int> result;
         int left = 0, right = numbers.size() - 1;
         while (left < right) {
-                if (numbers[left] + numbers[right] == target) {
+            if (numbers[left] + numbers[right] == target) {
                 result.push_back(numbers[left]);
                 result.push_back(numbers[right]);
                 int current_left = numbers[left];
