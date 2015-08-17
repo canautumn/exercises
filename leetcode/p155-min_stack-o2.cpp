@@ -48,7 +48,6 @@ on to the min stack. When we perform the pop operation, check if the popped
 element is the same as the current minimum. If it is, pop it off the min stack 
 too.
 
-Submission Details
 17 / 17 test cases passed.
 Status: Accepted
 Runtime: 75 ms
