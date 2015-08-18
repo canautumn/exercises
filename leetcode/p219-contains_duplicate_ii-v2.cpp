@@ -28,6 +28,14 @@ traversing or deleting.
 - If memory leak is acceptable, the hash map could be a little faster without 
 destructor.
 
+Pitfalls:
+- When implementing hash map using "value % bucket_number" as the hash, 
+remember to deal with NEGATIVE HASH, since for example "-1 & 10 == -1". One way 
+to do this is to allocate "bucket_number * 2 - 1" buckets, and shift the 
+negative hash to positive numbers to accommodate into array indexes.
+- Always remember to initialize any plain type array to avoid unexpected 
+behaviors.
+
 [xmx]
 (bucket number = 100)
 19 / 19 test cases passed.

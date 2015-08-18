@@ -33,8 +33,9 @@ private boolean isPrime(int num) {
 }
 The Sieve of Eratosthenes is one of the most efficient ways to find all prime numbers up to n. But don't let that name scare you, I promise that the concept is surprisingly simple.
 
+https://leetcode.com/static/images/solutions/Sieve_of_Eratosthenes_animation.gif
 
-Sieve of Eratosthenes: algorithm steps for primes below 121. "Sieve of Eratosthenes Animation" by SKopp is licensed under CC BY 2.0.
+Sieve of Eratosthenes: algorithm steps for primes below 121. "Sieve of Eratosthenes Animation (http://commons.wikimedia.org/wiki/File:Sieve_of_Eratosthenes_animation.gif)" by SKopp is licensed under CC BY 2.0.
 
 We start off with a table of n numbers. Let's look at the first number, 2. We know all multiples of 2 must not be primes, so we mark them off as non-primes. Then we look at the next number, 3. Similarly, all multiples of 3 such as 3 × 2 = 6, 3 × 3 = 9, ... must not be primes, so we mark them off as well. Now we look at the next number, 4, which was already marked off. What does this tell you? Should you mark off all multiples of 4 as well?
 
@@ -46,7 +47,7 @@ It is easy to say that the terminating loop condition is p < n, which is certain
 
 Yes, the terminating loop condition can be p < √n, as all non-primes ≥ √n must have already been marked off. When the loop terminates, all the numbers in the table that are non-marked are prime.
 
-The Sieve of Eratosthenes uses an extra O(n) memory and its runtime complexity is O(n log log n). For the more mathematically inclined readers, you can read more about its algorithm complexity on Wikipedia.
+The Sieve of Eratosthenes uses an extra O(n) memory and its runtime complexity is O(n log log n). For the more mathematically inclined readers, you can read more about its algorithm complexity on Wikipedia (http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes#Algorithm_complexity).
 
 public int countPrimes(int n) {
    boolean[] isPrime = new boolean[n];

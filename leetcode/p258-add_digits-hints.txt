@@ -1,0 +1,9 @@
+Hint:
+
+A naive implementation of the above process is trivial. Could you come up with other methods?
+
+What are all the possible results?
+
+How do they occur, periodically or randomly?
+
+You may find this Wikipedia (https://en.wikipedia.org/wiki/Digital_root) article useful.

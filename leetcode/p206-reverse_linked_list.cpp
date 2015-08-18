@@ -62,7 +62,6 @@ public:
             prev = curr;
             curr = next;
             next = next->next;
-            
         }
         curr->next = prev;
         return curr;
