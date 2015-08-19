@@ -58,8 +58,13 @@ SOLUTION 4 (log2 and floor)
 
     return (int)log2(n) == log2(n);
 
-(All the solutions runs 8ms for the test set.)
+(All the above solutions runs 8ms for the test set.)
 
+SOLUTION 5 (Convert to binary number string and use regex)
+
+    return regex_match(bitset<64>(n).to_string(), regex("0*10*"));
+    
+(Note that regex is not supported in the OJ yet.)
 
 
 Pitfalls:
